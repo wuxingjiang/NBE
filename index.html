@@ -7,8 +7,19 @@
     </head>
     <body>
         <p>wuxingjiang mobile editor test!!</p>
-
+        <div>
+            <textarea id="wuEditor" style="width:100%; height:100%">
+                <p>请输入内容。。。</p>
+            </textarea>
+        </div>
+        <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
         <script src="./js/wuEditor.js"></script>
+        <script>
+            $(function() {
+                var editor = new _$$_E('wuEditor');
+                editor.init();
+            })
+        </script>
     </body>
 </html>
 
