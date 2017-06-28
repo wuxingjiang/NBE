@@ -108,7 +108,7 @@
     };
     Editor.prototype.command = function (commandName, bool, commandValue, e, callback) {
 		var self = this;
-
+        var regRestoreNoWrapSelection = /insertimage/i;
 		// 验证该命令是否不能恢复外围选区，将传入到 customCommand 中
 		var regResult = regRestoreNoWrapSelection.test(commandName);
 
