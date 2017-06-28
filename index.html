@@ -12,12 +12,18 @@
                 <p>请输入内容。。。</p>
             </textarea>
         </div>
+        <button class="js_btn">插入</button>
         <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
         <script src="./js/wuEditor.js"></script>
         <script>
             $(function() {
                 var editor = new _$$_E('wuEditor');
                 editor.init();
+
+                $('.js_btn').on('click', function () {
+                    console.log('in')
+                    editor.command('insertimage', false, 'https://avatars1.githubusercontent.com/u/15045361?v=3&s=32', event)
+                })
             })
         </script>
     </body>
