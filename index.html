@@ -24,6 +24,10 @@
                     console.log('in')
                     editor.command('insertimage', false, 'https://avatars1.githubusercontent.com/u/15045361?v=3&s=32', event)
                 })
+
+                editor.change = function() {
+                    console.log('lalals')
+                } 
             })
         </script>
     </body>

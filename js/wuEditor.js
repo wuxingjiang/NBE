@@ -81,11 +81,11 @@
         var $txt = $('<div contentEditable="true" class="wuEditor-mobile-txt">' + val + '</div>');
 
         // mobile comtainer
-        var $modalContainer = $('<div class="wuEditor-mobile-container"></div>');
+        // var $modalContainer = $('<div class="wuEditor-mobile-container"></div>');
 
         //记录对象中
         self.$txt = $txt;
-        self.$modalContainer = $modalContainer;
+        // self.$modalContainer = $modalContainer;
 
         //最后插入一个空行
         self.insertEmpltyLink();
@@ -101,10 +101,20 @@
         function selectionHeader () {
             var focusElem;
             var $focusElem;
-
             // 保存选中区域
             self.saveSelection();
         }
+
+        // tap时，记录选区，
+		$txt.on('focus', function () {
+			// 记录编辑器区域已经focus
+			self.isFocus = true;
+		});
+
+        // change 
+        $txt.on('keyup', function () {
+            self.change && self.change() 
+        })
     };
     Editor.prototype.command = function (commandName, bool, commandValue, e, callback) {
 		var self = this;
@@ -166,6 +176,8 @@
 			callback.call(self);
 		}
 
+        // 触发changge事件
+        self.change && self.change()
 	};
 
     // 恢复选中区域
@@ -274,12 +286,12 @@
         var self = this;
         var $textarea = self.$textarea;
         var $txt =self.$txt;
-        var $modalContainer = self.$modalContainer;
+        // var $modalContainer = self.$modalContainer;
         var $body = self.$body;
 
         $textarea.after($txt);
         $textarea.hide();
-        $body.append($modalContainer)
+        // $body.append($modalContainer)
     };
 
     // 给最后插入一个空行
@@ -304,5 +316,8 @@
         
         //渲染编辑区域
         self.renderTxt();
+        // 绑定编辑区事件
+        self.bindTxtEvent();
     };
+    
 })(window, window.Zepto)
